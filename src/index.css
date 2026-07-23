@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --logo-dark-bg: #0a0b0d;
+  --logo-cream: #f6eda6;
+  --text-main: #fdfcf5;
+  --text-muted: #d0cdc3;
+  --border-color: #313337;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--logo-dark-bg);
+  color: var(--text-main);
+}
+
+.text-theme { color: var(--text-main); }
+.text-theme-muted { color: var(--text-muted); }
+.bg-theme-dark { background-color: var(--logo-dark-bg); }
+.bg-theme-muted { background-color: #1a1c1f; }
+.border-theme { border-color: var(--border-color); }
+.border-theme-muted { border-color: #212326; }
+.accent-cream { background-color: var(--logo-cream); color: var(--logo-dark-bg); }
+.accent-border-cream { border-color: var(--logo-cream); }
+.accent-text-cream { color: var(--logo-cream); }
+
+input, select {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+input:focus, select:focus {
+  border-color: var(--logo-cream) !important;
+}
+
+select option {
+  background-color: #1a1c1f !important;
+  color: #fdfcf5 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23f6eda6"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>');
+  cursor: pointer;
+  opacity: 0.9;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
