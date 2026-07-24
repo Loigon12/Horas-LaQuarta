@@ -248,35 +248,41 @@ export default function App() {
               return (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-4 rounded-xl bg-theme-muted border border-theme-muted hover:border-theme transition-all group"
+                  className="flex items-center justify-between p-3 sm:p-4 rounded-xl bg-theme-muted border border-theme-muted hover:border-theme transition-all group"
                 >
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
                     <span
-                      className={`text-xs font-mono px-2.5 py-1 rounded-md border uppercase font-semibold tracking-wider ${
+                      className={`text-[10px] sm:text-xs font-mono px-2 py-1 rounded-md border uppercase font-semibold tracking-wider flex-shrink-0 ${
                         isExec
                           ? 'bg-theme border-logo-cream text-theme'
                           : 'bg-theme-muted border-theme-muted text-theme-muted'
                       }`}
                     >
-                      {log.type}
+                      {log.type.substring(0, 3)} {/* Versión corta para móvil */}
                     </span>
-                    <div>
-                      <p className="text-sm font-medium text-theme">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium text-theme truncate">
                         {log.desc || 'Sin descripción'}
                       </p>
-                      <p className="text-xs font-mono text-theme-muted mt-0.5">
+                      <p className="text-xs font-mono text-theme-muted mt-0.5 truncate">
                         {log.date} • {log.hours} h × ${rate.toLocaleString('es-CO')}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <span className="text-sm font-mono font-semibold text-theme accent-text-cream">
+                  {/* Sección de acciones y total */}
+                  <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0 ml-3">
+                    <span className="text-sm font-mono font-semibold text-theme accent-text-cream whitespace-nowrap">
                       {formatCOP(earned)}
                     </span>
+                    
+                    {/* Botón de Eliminar CORREGIDO para móvil */}
                     <button
                       onClick={() => handleDelete(index)}
-                      className="text-theme-muted hover:accent-text-cream opacity-0 group-hover:opacity-100 transition-all text-xs cursor-pointer"
+                      className="text-theme-muted hover:accent-text-cream transition-all text-xs cursor-pointer p-1
+                                 opacity-100  /* Siempre visible en móvil */
+                                 sm:opacity-0 sm:group-hover:opacity-100 /* Efecto hover solo en escritorio */"
+                      title="Eliminar registro"
                     >
                       ✕
                     </button>
